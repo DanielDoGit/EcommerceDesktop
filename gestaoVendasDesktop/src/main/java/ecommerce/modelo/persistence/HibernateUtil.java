@@ -1,5 +1,7 @@
 package ecommerce.modelo.persistence;
 
+import javax.swing.JOptionPane;
+
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.Session;
@@ -24,12 +26,13 @@ public abstract class HibernateUtil {
 			conf.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			conf.setProperty("hibernate.current_session_context_class", "thread");
 			conf.setProperty("hibernate.show_sql", "true");
+			conf.setProperty("hibernate.format_sql","true");
 			sessionFactory = conf.buildSessionFactory();
 		} catch (MappingException e) {
-			System.out.println(e);
+			JOptionPane.showMessageDialog(null, e);
 			SistemaUtil.gravarLog(e);
 		} catch (HibernateException e) {
-			System.out.println(e);
+			JOptionPane.showMessageDialog(null, e);
 			SistemaUtil.gravarLog(e);
 		}
 
