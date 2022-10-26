@@ -43,7 +43,5 @@ public abstract class Dao<E> {
 		criteria.add(Restrictions.ilike(atributo, args, MatchMode.ANYWHERE));
 		return criteria.list();
 	}
-		
 	
-
 }
